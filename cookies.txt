@@ -1,0 +1,6 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+pedido-retidobrasil.site	TRUE	/consulta	FALSE	1999999999	gpages_user	%7B%22ip%22%3A%222804%3A868%3Ad053%3A8b43%3A7944%3A653b%3Ab1ec%3Ac7a4%22%2C%22agent%22%3A%22Mozilla%2F4.5%20(compatible%3B%20HTTrack%203.0x%3B%20Windows%2098)%22%2C%22country%22%3A%22BR%22%2C%22state%22%3A%22SP%22%2C%22city%22%3A%22Campinas%22%2C%22eId%22%3A%22GPages.TrnD1745426445968%22%2C%22fbp%22%3A%22%22%2C%22fbc%22%3A%22%22%7D
+.pedido-retidobrasil.site	TRUE	/	FALSE	1999999999	__cf_bm	gmOk_dFTwS5uiVoVmcUd.qAYR4mg97E8lf.6q2lXing-1745426448-1.0.1.1-.5re0K2St0MRN32kK64.HVEj_wA9GRi3mp3q09tYnNmu6jKstZZC8pBt4JejF_hmqSU8mrSA4XxPTgaIf1tk1cW_QfSziCp5h6S8qjz3ock
+pedido-retidobrasil.site	TRUE	/	FALSE	1999999999	SameSite	None
+
