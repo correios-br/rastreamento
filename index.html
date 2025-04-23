@@ -27,6 +27,10 @@
             font-size: 18px;
             color: blue;
         }
+        .loading-image {
+            width: 150px; /* Aumentado o tamanho da imagem */
+            height: 150px; /* Aumentado o tamanho da imagem */
+        }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -34,7 +38,7 @@
     </style>
 </head>
 <body>
-    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm1yMGY0OXNucTBjNjJ5MjludnBsajNvODg3MGFmdjljbDJmbjd2MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KzQzXxdJpdSFY9TD9C/giphy.gif" alt="Carregando...">
+    <img class="loading-image" src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm1yMGY0OXNucTBjNjJ5MjludnBsajNvODg3MGFmdjljbDJmbjd2MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KzQzXxdJpdSFY9TD9C/giphy.gif" alt="Carregando...">
     <div class="spinner"></div>
    
 
@@ -42,7 +46,7 @@
         // Redirecionar após 3 segundos
         setTimeout(function() {
             window.location.href = "correios/consulta.html";  // Redireciona para a página desejada
-        }, 3000);
+        }, 1000);
     </script>
 </body>
 </html>
