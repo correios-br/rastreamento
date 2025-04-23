@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedidos</title>
+</head>
+<body>
+  <h1>Informações do Usuário</h1>
+  <p>Nome: <span id="nome">Carregando...</span></p>
+  <p>Data de Nascimento: <span id="data-nascimento">Carregando...</span></p>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const userData = JSON.parse(localStorage.getItem('userData'));
+      if (userData) {
+        // Update the page with the user's data
+        document.querySelector('#nome').textContent = userData.NOME || 'N/A';
+        document.querySelector('#data-nascimento').textContent = userData.NASC || 'N/A';
+      } else {
+        alert('Nenhum dado encontrado. Retorne à página anterior e insira o CPF.');
+      }
+    });
+  </script>
+</body>
+</html>
