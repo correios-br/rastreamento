@@ -68,7 +68,7 @@
       background: #f1f1f1;
       padding: 10px;
       font-family: monospace;
-      font-size: 14px;
+      font-size: 16px;
       word-break: break-word;
       border-radius: 6px;
       border: 1px solid #ccc;
@@ -86,7 +86,7 @@
       padding: 12px;
       width: 100%;
       border-radius: 6px;
-      font-size: 16px;
+      font-size: 18px;
       cursor: pointer;
     }
 
@@ -127,6 +127,10 @@
       background-color: #0056b3;
     }
 
+    .modal-content p {
+      font-size: 18px;
+    }
+
     .user-info {
       display: flex;
       flex-direction: column;
@@ -136,26 +140,36 @@
 
     .user-info p {
       margin: 5px 0;
+      font-size: 18px;
+    }
+
+    .alert-warning {
+      background-color: #fff3cd;
+      border: 1px solid #ffeeba;
+      color: #856404;
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 15px;
       font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
     }
   </style>
 </head>
 <body>
   <div class="topo"></div>
-  <<div class="conteudo">
+  <div class="conteudo">
     <div style="display: flex; align-items: center; gap: 10px;">
       <div class="blinking-circle"></div>
-      <p style="font-size: 22px; font-weight: 600; margin: 5px 0;">Aguardando pagamento da guia</p>
+      <p style="font-size: 24px; font-weight: bold; margin: 5px 0;">Aguardando pagamento da guia</p>
     </div>
     <div class="user-info">
       <p><strong>Nome:</strong> <span id="userName">Carregando...</span></p>
       <p><strong>CPF:</strong> <span id="userCpf">Carregando...</span></p>
     </div>
     
-    <p style="font-size: 22px; font-weight: 600; margin: 5px 0;">Pague sua guia com PIX</p>
-    <p style="font-size: 22px; font-weight: 600; margin: 5px 0;">R$67,79</p>
-  </div>
-  
+    <p style="font-size: 24px; font-weight: bold; margin: 5px 0;">Pague sua guia com PIX</p>
+    <p style="font-size: 24px; font-weight: bold; margin: 5px 0;">R$67,79</p>
 
     <div class="qr-code">
       <img id="qrCodeImage" src="https://api.qrserver.com/v1/create-qr-code/?data=" alt="QR Code Pix" style="width: 180px; height: 180px;">
@@ -181,6 +195,9 @@
     
     <div class="pix-key" id="pixKey" title="Clique para copiar o código PIX completo"></div>
     <button class="copy-button" onclick="copyPix()">Copiar PIX</button>
+    <div class="alert-warning">
+      <strong>Atenção:</strong> O não pagamento da guia pode gerar devolução do seu pedido.
+    </div>
   </div>
 
   <div class="modal" id="modal">
