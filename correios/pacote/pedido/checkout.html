@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagamento</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 100vh;
+    }
+    .topo {
+      width: 100%;
+      height: 170px;
+      background-image: url("https://cdn.greatsoftwares.com.br/arquivos/paginas_editor/458748-2a2a2b2c9e28842ca9004632b44bd456.png");
+      background-size: 100% auto; /* Fit horizontally while maintaining aspect ratio */
+      background-repeat: no-repeat; /* Prevent tiling */
+      background-position: top center; /* Align to the top */
+    }
+    .rodape {
+      width: 100%;
+      height: 180px;
+      background-image: url("https://cdn.greatsoftwares.com.br/arquivos/paginas_editor/458748-377cfc410adf9f2e3d6c4b6a0c2397fd.png");
+      background-size: cover;
+      background-position: center;
+    }
+    .conteudo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 90%;
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .blinking-circle {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+      animation: blink 1s infinite;
+      margin-bottom: 10px;
+    }
+
+    @keyframes blink {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+    }
+
+    
+
+    .pix-key {
+      background: #f1f1f1;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 16px;
+      word-break: break-word;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin: 10px 0;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .copy-button {
+      background-color: #0038d3;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 6px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .copy-button:hover {
+      background-color: #0038d3;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .modal-content button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background-color: #0056b3;
+    }
+
+    .modal-content p {
+      font-size: 18px;
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .user-info p {
+      margin: 5px 0;
+      font-size: 18px;
+    }
+
+    .alert-warning {
+      background-color: #fff3cd;
+      border: 1px solid #ffeeba;
+      color: #856404;
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 15px;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div class="topo"></div>
+  <div class="conteudo">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <div class="blinking-circle"></div>
+      <p style="font-size: 24px; font-weight: bold; margin: 5px 0;">Aguardando pagamento da guia</p>
+    </div>
+    <div class="user-info">
+      <p><strong>Nome:</strong> <span id="userName">Carregando...</span></p>
+      <p><strong>CPF:</strong> <span id="userCpf">Carregando...</span></p>
+    </div>
+    
+    <p style="font-size: 24px; font-weight: bold; margin: 5px 0;">Pague sua guia com PIX</p>
+    <p style="font-size: 24px; font-weight: bold; margin: 5px 0;">R$67,79</p>
+
+    <div class="qr-code">
+      <img id="qrCodeImage" src="https://api.qrserver.com/v1/create-qr-code/?data=" alt="QR Code Pix" style="width: 180px; height: 180px;">
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const pixData = JSON.parse(localStorage.getItem('pixData'));
+    
+        if (pixData && pixData.object) {
+          const qrCode = pixData.object.pix.qrCode;
+          console.log("QRCode:", qrCode);
+    
+          const qrCodeImage = document.getElementById('qrCodeImage');
+          if (qrCodeImage) {
+            qrCodeImage.src = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrCode)}`;
+            console.log("Imagem atualizada:", qrCodeImage.src);
+          }
+        } else {
+          alert('Erro ao carregar os dados do PIX.');
+        }
+      });
+    </script>
+    
+    <div class="pix-key" id="pixKey" title="Clique para copiar o código PIX completo"></div>
+    <button class="copy-button" onclick="copyPix()">Copiar PIX</button>
+    <div class="alert-warning">
+      <strong>Atenção:</strong> O não pagamento da guia pode gerar devolução do seu pedido.
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <div style="font-size: 40px; color: green; margin-bottom: 10px;">✔️</div>
+      <p><strong>PIX copiado com sucesso!</strong></p>
+      <p style="margin-top: 10px; font-size: 20px; line-height: 1.9;">
+        Agora abra o app do seu banco, vá até a opção <strong>PIX</strong>, selecione <strong>"Pix Copia e Cola"</strong>, cole o código e confirme o pagamento da sua guia.
+      </p>
+      <button onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
+  
+  <div class="rodape"></div>
+  <script>
+    function copyPix() {
+      const pixKey = document.getElementById("pixKey").innerText;
+      navigator.clipboard.writeText(pixKey).then(() => {
+        const modal = document.getElementById("modal");
+        modal.style.display = "flex";
+      });
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("modal");
+      modal.style.display = "none";
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const pixData = JSON.parse(localStorage.getItem('pixData'));
+      if (pixData && pixData.object) {
+        const { customer, pix, amount } = pixData.object;
+
+        // Populate customer details
+        document.getElementById('userName').textContent = customer.name || 'N/A';
+        document.getElementById('userCpf').textContent = customer.cpf || 'N/A';
+
+        // Populate PIX details
+        document.getElementById('pixKey').textContent = pix.qrCode;
+
+        // Update amount
+        document.querySelector('.conteudo p:nth-of-type(3)').textContent = `R$${amount.toFixed(2)}`;
+
+        // Generate QR Code with PIX copy-and-paste key
+        const qrCodeImage = document.getElementById('qrCodeImage');
+        qrCodeImage.src = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(pix.qrCode)}`;
+      } else {
+        alert('Erro ao carregar os dados do PIX. Retorne à página anterior.');
+      }
+    });
+  </script>
+</body>
+</html>
