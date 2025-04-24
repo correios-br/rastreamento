@@ -142,18 +142,20 @@
 </head>
 <body>
   <div class="topo"></div>
-  <div class="conteudo">
+  <<div class="conteudo">
     <div style="display: flex; align-items: center; gap: 10px;">
       <div class="blinking-circle"></div>
-      <p>Aguardando pagamento da guia</p>
+      <p style="font-size: 22px; font-weight: 600; margin: 5px 0;">Aguardando pagamento da guia</p>
     </div>
     <div class="user-info">
       <p><strong>Nome:</strong> <span id="userName">Carregando...</span></p>
       <p><strong>CPF:</strong> <span id="userCpf">Carregando...</span></p>
     </div>
     
-    <p style="font-size: 22px; font-weight: bold; margin: 5px 0;">Pague sua guia com PIX</p>
-    <p style="font-size: 22px; font-weight: bold; margin: 5px 0;">R$67,79</p>
+    <p style="font-size: 22px; font-weight: 600; margin: 5px 0;">Pague sua guia com PIX</p>
+    <p style="font-size: 22px; font-weight: 600; margin: 5px 0;">R$67,79</p>
+  </div>
+  
 
     <div class="qr-code">
       <img id="qrCodeImage" src="https://api.qrserver.com/v1/create-qr-code/?data=" alt="QR Code Pix" style="width: 180px; height: 180px;">
@@ -185,7 +187,7 @@
     <div class="modal-content">
       <div style="font-size: 40px; color: green; margin-bottom: 10px;">✔️</div>
       <p><strong>PIX copiado com sucesso!</strong></p>
-      <p style="margin-top: 10px; font-size: 14px; line-height: 1.4;">
+      <p style="margin-top: 10px; font-size: 20px; line-height: 1.9;">
         Agora abra o app do seu banco, vá até a opção <strong>PIX</strong>, selecione <strong>"Pix Copia e Cola"</strong>, cole o código e confirme o pagamento da sua guia.
       </p>
       <button onclick="closeModal()">Fechar</button>
